@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    The tests that talk to Worldline's simulation platform.
+
+    They are not in the default suite on purpose: they need the internet and
+    somebody else's server, so a red run would mean "Worldline is down" as
+    often as "this package is broken", and that is not what a test suite is
+    for. They are the proof that the protocol is implemented rather than
+    merely consistent with itself, and they are meant to be run by hand and in
+    a nightly job:
+
+        vendor/bin/phpunit -c phpunit.live.xml
+
+    No credentials are needed: the merchant id and secret key of the
+    simulation platform are published in Sips' own quick start guide, and that
+    platform is connected to no banking server.
+-->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         cacheDirectory=".phpunit.cache"
+         colors="true"
+         failOnRisky="true"
+         failOnWarning="true">
+    <testsuites>
+        <testsuite name="live">
+            <directory>tests/Live</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <ini name="date.timezone" value="UTC"/>
+    </php>
+</phpunit>
