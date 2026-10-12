@@ -6,7 +6,16 @@ follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) — which for
 a payment library means the seal rules, the field names and the shape of a
 verified response are the public surface, not just the method signatures.
 
-## [Unreleased]
+## [0.1.0] - 2026-10-12
+
+First release. `0.x` on purpose, and for a narrower reason than usual: the
+protocol itself is verified against Worldline's own servers - the seals in
+both directions, the field sets, the interface versions, and a complete
+payment taken through a browser with a card and a 3-D Secure step. What has
+not happened is a payment on a *merchant's* terminal, where the contract
+decides the capture mode, the seal algorithm and whether the shop names its
+own transactions. Until this package has met one of those, the version
+number should not promise that no name has to move.
 
 ### Added
 
@@ -25,3 +34,5 @@ verified response are the public surface, not just the method signatures.
   that keeps a query parameter out of a signature.
 - A live test suite against Worldline's simulation and Office test platforms,
   needing no contract - their credentials are published in Sips' own guides.
+
+[0.1.0]: https://github.com/xPiston/worldline-sips/releases/tag/v0.1.0
