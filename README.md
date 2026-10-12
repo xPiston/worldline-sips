@@ -10,7 +10,7 @@ for Laravel, Symfony, or no framework at all.
 [![PHP](https://img.shields.io/badge/PHP-8.2%20%E2%86%92%208.5-777BB4?logo=php&logoColor=white)](https://php.net)
 [![Laravel](https://img.shields.io/badge/Laravel-12%20%7C%2013-FF2D20?logo=laravel&logoColor=white)](https://laravel.com)
 [![Symfony](https://img.shields.io/badge/Symfony-6.4%20%7C%207-000000?logo=symfony&logoColor=white)](https://symfony.com)
-[![Tests](https://img.shields.io/badge/tests-238%20%2B%2010%20live-22C55E)](#-tests)
+[![Tests](https://img.shields.io/badge/tests-243%20%2B%2010%20live-22C55E)](#-tests)
 [![PHPStan](https://img.shields.io/badge/PHPStan-max-2563EB)](#-tests)
 [![License](https://img.shields.io/badge/license-MIT-blue)](#license)
 
@@ -55,7 +55,7 @@ capture, cancel or refund.
 - 🏷️ **`transactionReference` optional**, because a shop can be configured to
   let Sips generate it — and then sending one is an error
 - 🧩 **Laravel and Symfony bridges**, a hundred lines each, both optional
-- ✅ **238 tests** with no network, plus **10 live tests** against Worldline
+- ✅ **243 tests** with no network, plus **10 live tests** against Worldline
 
 ## 🚀 Quick start
 
@@ -370,7 +370,7 @@ src/
 
 ```sh
 composer install
-composer test        # 238 tests, no network
+composer test        # 243 tests, no network
 composer analyse     # PHPStan, level max
 composer test:lint   # Pint
 
