@@ -208,6 +208,33 @@ Five negative controls and one positive, which is a stronger statement than any
 documentation. The response seal was confirmed the same way: a reply of
 `{"responseCode":"12"}` is sealed as the HMAC of the string `12`.
 
+### What a payment actually looks like
+
+Driven end to end through a browser against the simulator — the form, a card
+typed on Worldline's page, the 3-D Secure step, and the response verified by
+this package:
+
+| the customer… | `responseCode` | what came back |
+| :-- | :-- | :-- |
+| pays with a good card and passes 3-D Secure | **00** | 26 fields: brand, masked PAN, authorisation number, `3D_SUCCESS` |
+| is refused, then gives up | **17** | 18 fields, no brand, no PAN |
+| fails 3-D Secure, then gives up | **17** | 18 fields |
+
+Two things in that table are worth more than the table.
+
+**A refusal does not end the payment.** A refused card puts the customer back
+on Worldline's payment-method page to try another one; nothing is posted to
+your URLs. The response leaves only when the payment *ends* — paid, given up,
+or out of attempts. So a shop sees far more `17` than `05`, and an order with
+no response at all is a customer who closed the tab. Which is the argument for
+`automaticResponseUrl` restated as an observation: the browser is not a
+reliable messenger.
+
+**The field count changes with the outcome.** Twenty-six fields on an accepted
+payment, eighteen on an abandoned one — no `paymentMeanBrand`, no `maskedPan`,
+no `authorisationId`. Every accessor on `PaymentResponse` returns null rather
+than assuming, and this is why.
+
 ## 🧰 Laravel
 
 The provider is discovered automatically.
